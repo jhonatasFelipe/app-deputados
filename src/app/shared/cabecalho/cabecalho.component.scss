@@ -1,0 +1,11 @@
+ion-toolbar{
+    --background: green;
+    ion-title{
+        --color: white;
+        font-family: 'Timmana';
+    }
+    ion-button{
+        --color: white;
+        --border-radius: 100%; 
+    }
+}
