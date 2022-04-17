@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
+import { CapaComponent } from './capa/capa.component';
 
 
 
 @NgModule({
-  declarations: [CabecalhoComponent],
+  declarations: [CabecalhoComponent, CapaComponent],
   imports: [
     CommonModule
   ],
   exports:[
-    CabecalhoComponent
+    CabecalhoComponent,
+    CapaComponent
   ]
 })
 export class SharedModule { }
