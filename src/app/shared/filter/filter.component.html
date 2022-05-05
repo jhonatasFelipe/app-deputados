@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Filtros de Deputados</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalDimiss()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-select 
+      multiple="true" 
+      placeholder="selecione um ou mais partidos"
+      (ionChange)="teste($e)"
+      >
+    <ion-select-option 
+      *ngFor="let partido of partidos" 
+      value="partido.sigla"
+     >{{ partido.sigla }} - {{ partido.nome }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-select 
+      multiple="true" 
+      placeholder="selecione um ou mais estados">
+    <ion-select-option 
+      *ngFor="let estado of estados"
+      value="estado.sigla">{{ estado.sigla }} - {{ estado.nome }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+</ion-content>
+{{ estadosSelecionados }}

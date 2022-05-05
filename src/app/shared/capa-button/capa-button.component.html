@@ -1,0 +1,4 @@
+<button [ngClass]="{'red': excluir, 'green':!excluir}">
+  <ion-icon *ngIf="!excluir" name="checkmark-outline"></ion-icon>
+  <ion-icon *ngIf="excluir"  name="close-outline"></ion-icon>
+</button>

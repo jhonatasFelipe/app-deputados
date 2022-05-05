@@ -3,6 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path:'',
+    loadChildren: ()=> import('./pesquisa/pesquisa.module').then( m => m.PesquisaPageModule)
+  },
+  {
     path:'pesquisa',
     loadChildren: ()=> import('./pesquisa/pesquisa.module').then( m => m.PesquisaPageModule)
   }
