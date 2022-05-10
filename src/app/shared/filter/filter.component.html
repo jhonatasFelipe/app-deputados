@@ -11,23 +11,31 @@
     <ion-select 
       multiple="true" 
       placeholder="selecione um ou mais partidos"
-      (ionChange)="teste($e)"
+      (ionChange)="selecionaPartido($event)"
       >
     <ion-select-option 
       *ngFor="let partido of partidos" 
-      value="partido.sigla"
+      [value]="partido.sigla"
      >{{ partido.sigla }} - {{ partido.nome }}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-select 
       multiple="true" 
-      placeholder="selecione um ou mais estados">
+      placeholder="selecione um ou mais estados"
+      (ionChange)="selecionaEstado($event)"
+      >
     <ion-select-option 
       *ngFor="let estado of estados"
-      value="estado.sigla">{{ estado.sigla }} - {{ estado.nome }}</ion-select-option>
+      [value]="estado.sigla">{{ estado.sigla }} - {{ estado.nome }}</ion-select-option>
     </ion-select>
   </ion-item>
+
+  <ion-button 
+    color="primary" 
+    expand="block"
+    > Filtrar</ion-button>
   
 </ion-content>
-{{ estadosSelecionados }}
+{{ partidosSelecionados | json }}
+{{ estadosSelecionados | json }}

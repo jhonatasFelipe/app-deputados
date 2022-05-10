@@ -6,7 +6,7 @@ import { CapaButtonComponent } from './capa-button/capa-button.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FilterComponent } from './filter/filter.component';
 import { SelecterComponent } from './selecter/selecter.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

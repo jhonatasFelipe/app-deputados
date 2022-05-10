@@ -14,8 +14,8 @@ export class FilterComponent implements OnInit{
 
   partidos: Partido[] = [];
   estados : Uf[] = [];
-  partidosSelecionados: string[] =['AVANTE'];
-  estadosSelecionados: string[] = ['minas gerais'];
+  partidosSelecionados: string[] = [];
+  estadosSelecionados: string[] = [];
 
   constructor(private modalControl:ModalController,
               private partidosService:PartidosService,
@@ -43,8 +43,12 @@ export class FilterComponent implements OnInit{
   this.modalControl.dismiss()
  }
 
- teste(e){
-  alert(JSON.stringify(e));
+ selecionaPartido(e){
+  this.partidosSelecionados = e.detail.value;
+ }
+
+ selecionaEstado(e){
+   this.estadosSelecionados = e.detail.value;
  }
 
 }
