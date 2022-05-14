@@ -4,12 +4,17 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path:'',
-    loadChildren: ()=> import('./pesquisa/pesquisa.module').then( m => m.PesquisaPageModule)
+    loadChildren: ()=> import('./pages/pesquisa/pesquisa.module').then( m => m.PesquisaPageModule)
   },
   {
     path:'pesquisa',
-    loadChildren: ()=> import('./pesquisa/pesquisa.module').then( m => m.PesquisaPageModule)
+    loadChildren: ()=> import('./pages/pesquisa/pesquisa.module').then( m => m.PesquisaPageModule)
+  },
+  {
+    path: 'deputado',
+    loadChildren: () => import('./pages/deputado/deputado.module').then( m => m.DeputadoPageModule)
   }
+
 ];
 
 @NgModule({

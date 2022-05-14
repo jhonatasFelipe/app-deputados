@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {  ModalController } from '@ionic/angular';
+import FilterDeputado from 'src/app/Classes/FilterDeputado';
 import { FilterComponent } from '../filter/filter.component';
 
 @Component({
@@ -8,6 +9,8 @@ import { FilterComponent } from '../filter/filter.component';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
+
+  @Output() ChangeFilters = new EventEmitter();
   constructor( public modalControl: ModalController) { }
 
   ngOnInit() {}
@@ -18,6 +21,12 @@ export class SearchBarComponent implements OnInit {
     });
 
     await modal.present();
+
+    let {data ,role} = await modal.onWillDismiss();
+    
+    if(role === 'filtro'){
+      this.ChangeFilters.emit(data);
+    }
   }
 
 }

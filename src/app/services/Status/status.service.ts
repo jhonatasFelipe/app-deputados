@@ -13,8 +13,8 @@ export class StatusService extends GenericService<Status>{
     this.complementourl = "/deputados"
   }
 
-  getAll(){
-    return this.list();
+  getAll(parametros?:any){
+    return this.list(parametros);
   }
   
 }

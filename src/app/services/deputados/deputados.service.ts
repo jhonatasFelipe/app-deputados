@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DeputadosService extends GenericService<Deputado> {
   constructor(protected http:HttpClient) {
-    super(http);
+    super(http,);
     this.complementourl = "/deputados";
    }
 

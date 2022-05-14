@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import Status from 'src/app/Classes/Status';
 import { Partidos } from 'src/app/Enums/Partidos';
 import { Estados } from 'src/app/Enums/Estados';
@@ -10,6 +10,7 @@ import { Estados } from 'src/app/Enums/Estados';
 })
 export class CapaComponent implements OnInit, OnChanges {
   @Input() deputado : Status;
+  @Input() active: boolean = false;
   imagemPartido: string;
   imagemEstado: string;
   constructor() { }

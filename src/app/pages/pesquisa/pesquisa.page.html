@@ -1,0 +1,19 @@
+<ion-header>
+  <cabecalho></cabecalho>
+</ion-header>
+<ion-content>
+  <h1 class="titulo">Gerencie os deputados</h1>
+  <h5 class="subTitulo">Você está seguindo:</h5>
+  <capa 
+    *ngFor="let deputado of DeputadosSeguidos" 
+    [deputado]=deputado
+    [active]=true
+    (click)="deixarDeSeguir(deputado)"
+    ></capa>
+  <h1 class="titulo">Encontre novos deputados para seguir</h1>
+  <search-bar (ChangeFilters)="pesquisar($event)"></search-bar>
+  <capa 
+    *ngFor="let deputado of deputados" 
+    [deputado]=deputado
+    (click)="selcionaDeputado(deputado)"></capa>
+</ion-content>

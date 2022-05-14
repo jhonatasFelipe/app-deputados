@@ -1,7 +1,7 @@
 import{HttpClient,HttpHeaders, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs"
 import { environment } from "../../environments/environment";
-import { map, mapTo, take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 
 export class GenericService<T>{
@@ -13,12 +13,12 @@ export class GenericService<T>{
         this.headers.append('enctype', 'multipart/form-data');
         this.headers.append('Accept' , 'application/json');
     }
-    list():Observable<T[]>{
-        return this.http.get<T[]>(this.API_URL + this.complementourl).pipe(
+    list(parametros?:any):Observable<T[]>{
+        return this.http.get<T[]>(this.API_URL + this.complementourl,{ params:parametros }).pipe(
             take(1),
             map((resp:any)=>{
                 return resp.dados
-            }));
+            }))
     }
 
     new (data:any ,id?:any){

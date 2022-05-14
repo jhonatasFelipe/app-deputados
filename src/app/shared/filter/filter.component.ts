@@ -40,7 +40,7 @@ export class FilterComponent implements OnInit{
   }
 
  modalDimiss(){
-  this.modalControl.dismiss()
+  this.modalControl.dismiss(null, 'fechar');
  }
 
  selecionaPartido(e){
@@ -49,6 +49,14 @@ export class FilterComponent implements OnInit{
 
  selecionaEstado(e){
    this.estadosSelecionados = e.detail.value;
+ }
+
+ filtrar(){
+  this.modalControl.dismiss(
+    {
+      partidos: this.partidosSelecionados, 
+      estados: this.estadosSelecionados
+    }, 'filtro');
  }
 
 }
