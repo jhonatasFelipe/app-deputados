@@ -9,6 +9,6 @@ import { GenericService } from '../GenericService';
 export class PartidosService extends GenericService<Partido> {
   constructor(protected http: HttpClient) { 
     super(http);
-    this.complementourl = '/partidos'
+    this.complementourl = 'partidos'
   }
 }

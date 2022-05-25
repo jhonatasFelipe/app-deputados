@@ -3,5 +3,5 @@
     <p class="nome">{{ deputado.nome }}</p>
     <img class="partido" src={{imagemPartido}}>
     <img class="uf" src={{imagemEstado}}>
-    <capa-button [excluir]=active></capa-button>
+    <capa-button [excluir]=active *ngIf=action></capa-button>
 </div>

@@ -1,10 +1,11 @@
 class FilterDeputado {
-    public siglaPartido: string[];
-    public siglaUf: string[];
+    nome: string;
+    siglaPartido?: Array<string>;
+    siglaUf?: Array<string>;
+    ordenarPor: string
 
-    constructor(siglaPartido: string[], siglaUf:string[]){
-        this.siglaPartido = siglaPartido;
-        this.siglaUf = siglaUf;
+    constructor(){
+        
     }
 }
 

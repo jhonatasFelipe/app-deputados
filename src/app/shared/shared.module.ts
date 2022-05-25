@@ -6,7 +6,9 @@ import { CapaButtonComponent } from './capa-button/capa-button.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FilterComponent } from './filter/filter.component';
 import { SelecterComponent } from './selecter/selecter.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { FormsModule } from '@angular/forms';
     SearchBarComponent,
     FilterComponent,
     SelecterComponent,
-    
   ],
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgChartsModule,
   ],
   exports:[
     CabecalhoComponent,
@@ -29,6 +33,9 @@ import { FormsModule } from '@angular/forms';
     SearchBarComponent,
     FilterComponent,
     SelecterComponent,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgChartsModule
   ]
 })
 export class SharedModule { }

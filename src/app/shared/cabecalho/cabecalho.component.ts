@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import User from 'src/app/Classes/User';
 
 @Component({
   selector: 'cabecalho',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabecalhoComponent implements OnInit {
 
+  user:User = new User();
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user.fullName = localStorage.getItem('fullName');
+  }
 
 }

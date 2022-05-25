@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Status from 'src/app/Classes/Status';
+import { environment } from 'src/environments/environment';
 import { GenericService } from '../GenericService';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class StatusService extends GenericService<Status>{
 
   constructor(protected http:HttpClient) { 
     super(http);
-    this.complementourl = "/deputados"
+    this.complementourl = "deputados"
   }
 
   getAll(parametros?:any){

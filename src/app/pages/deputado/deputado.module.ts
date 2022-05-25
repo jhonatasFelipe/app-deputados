@@ -7,14 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { DeputadoPageRoutingModule } from './deputado-routing.module';
 
 import { DeputadoPage } from './deputado.page';
+import { SharedModule } from '../../shared/shared.module';
+import { BoadPerfilComponent } from './componentes/boad-perfil/boad-perfil.component'
+import { DeputadosService } from 'src/app/services/deputados/deputados.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DeputadoPageRoutingModule
+    DeputadoPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [DeputadoPage]
+  declarations: [DeputadoPage, BoadPerfilComponent],
+  providers:[DeputadosService]
 })
 export class DeputadoPageModule {}

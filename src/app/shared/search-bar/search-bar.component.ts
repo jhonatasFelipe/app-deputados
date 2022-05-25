@@ -8,9 +8,13 @@ import { FilterComponent } from '../filter/filter.component';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })
+
 export class SearchBarComponent implements OnInit {
 
   @Output() ChangeFilters = new EventEmitter();
+  filtros:FilterDeputado = new FilterDeputado();
+
+
   constructor( public modalControl: ModalController) { }
 
   ngOnInit() {}
@@ -25,8 +29,15 @@ export class SearchBarComponent implements OnInit {
     let {data ,role} = await modal.onWillDismiss();
     
     if(role === 'filtro'){
-      this.ChangeFilters.emit(data);
+      this.filtros.siglaPartido = data.partidos;
+      this.filtros.siglaUf = data.estados
+      this.ChangeFilters.emit(this.filtros);
     }
+  }
+
+  findName(event:any){
+    this.filtros.nome = event.detail.value;
+    this.ChangeFilters.emit(this.filtros);
   }
 
 }

@@ -10,7 +10,7 @@ export class UfsService extends GenericService<Uf> {
 
   constructor(protected http:HttpClient) {
     super(http);
-    this.complementourl = "/referencias/uf";
+    this.complementourl = "referencias/uf";
    }
 }
 

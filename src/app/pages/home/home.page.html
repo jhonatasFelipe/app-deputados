@@ -1,0 +1,12 @@
+<ion-header>
+  <cabecalho></cabecalho>
+</ion-header>
+<ion-content>
+  <h1 class="titulo">Seus Deputados</h1>
+  <h5 class="subTitulo">Você está seguindo:</h5>
+  <capa 
+    *ngFor="let deputado of deputadosSeguidos" 
+    [deputado]=deputado
+    (click)="goToProfile(deputado.id)"
+    ></capa>
+</ion-content>

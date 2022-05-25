@@ -1,0 +1,43 @@
+.container{
+    background-color: green;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    h1{
+        font-family: 'Timmana';
+        font-size: 40px;
+        color: white;
+        max-width: 235px;
+    }
+    p{
+        color: white;
+        width: 80%;
+        font-size: 15px;
+        max-width: 235px;
+        text-align: center;
+    }
+    form{
+        ion-input{
+            --background: white;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .error{
+            display: block;
+            width: 100%;
+            background-color: lightcoral;
+            border-radius: 5px;
+            padding: 2px;
+            p{
+                font-size: 12px;
+                margin: 2px;
+                color:darkred;
+            }
+           
+        }
+    }
+}

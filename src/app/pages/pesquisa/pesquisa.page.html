@@ -5,9 +5,10 @@
   <h1 class="titulo">Gerencie os deputados</h1>
   <h5 class="subTitulo">Você está seguindo:</h5>
   <capa 
-    *ngFor="let deputado of DeputadosSeguidos" 
+    *ngFor="let deputado of deputadosSeguidos" 
     [deputado]=deputado
     [active]=true
+    [action]=true
     (click)="deixarDeSeguir(deputado)"
     ></capa>
   <h1 class="titulo">Encontre novos deputados para seguir</h1>
@@ -15,5 +16,6 @@
   <capa 
     *ngFor="let deputado of deputados" 
     [deputado]=deputado
+    [action]=true
     (click)="selcionaDeputado(deputado)"></capa>
 </ion-content>

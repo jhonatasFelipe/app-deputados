@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Entre</h1>
+    <p>preencha username e senha para identificarmos você</p>
+    <form [formGroup]="form"  (ngSubmit)="onSubmit()">
+      <ion-input
+        clearInput 
+        placeholder="usuário"
+        formControlName="username"
+      ></ion-input>
+      <span class="error"
+      *ngIf="form.get('username').invalid && (form.get('username').dirty || form.get('username').touched)"
+      >
+        <p *ngIf="form.get('username').errors.required">Campo Obrigatório</p>
+      </span>
+      <ion-input 
+        clearInput 
+        placeholder="Senha"
+        formControlName="password"
+        type="password"
+      ></ion-input>
+      <span class="error"
+      *ngIf="form.get('password').invalid && (form.get('password').dirty || form.get('password').touched)"
+      >
+      <p *ngIf="form.get('password').errors.required">Campo Obrigatório</p>
+      <p *ngIf="form.get('password').errors.minlength">Campo deve ter no minimo 8 caracteres</p>
+    </span>
+      <ion-button type="submit">Login</ion-button>
+      <ion-button type="reset" color="danger">Cancelar</ion-button>
+    </form>
+</div>
+

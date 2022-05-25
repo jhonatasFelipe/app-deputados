@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlCamara:'https://dadosabertos.camara.leg.br/api/v2/'
+  urlCamara:'https://dadosabertos.camara.leg.br/api/v2/',
+  urlApi:"https://tcciideputadosapi.azurewebsites.net/api/"
 };
 
 /*

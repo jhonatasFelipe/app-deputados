@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="container-image">
+    <img [src]="deputado?.ultimoStatus?.urlFoto">
+    <h1>  {{ this.deputado?.ultimoStatus?.nomeEleitoral }} </h1>
+  </div>
+  <footer>
+    <span><p class="titulo">Estado:</p><p>{{ deputado?.ultimoStatus?.siglaUf }}</p></span>
+    <span><p class="titulo">Partido:</p><p>{{ deputado?.ultimoStatus?.siglaPartido }}</p></span>
+    <span><p class="titulo">Idade:</p><p></p></span>
+    <span><p class="titulo">Profissão:</p><p></p></span>
+  </footer>
+</div>

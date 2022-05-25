@@ -3,7 +3,9 @@ import { StatusService } from '../../services/Status/status.service';
 import Status from '../../Classes/Status';
 import FilterDeputado from '../../Classes/FilterDeputado';
 import { LoadingController, ToastController } from '@ionic/angular';
-import Deputado from '../../Classes/Deputado';
+import DeputadoApi from 'src/app/Classes/DeputadoApi';
+import { DeputadosApiService } from 'src/app/services/DepudatosApi/deputados-api.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'pesquisa',
@@ -12,14 +14,16 @@ import Deputado from '../../Classes/Deputado';
 })
 
 export class PesquisaPage implements OnInit {
-  DeputadosSeguidos : Status[] = [];
+  usuario = localStorage.getItem('user');
+  deputadosSeguidos: DeputadoApi[];
   deputados : Status[];
-  filter:FilterDeputado = new FilterDeputado([],[]);
+  filter:FilterDeputado = new FilterDeputado();
   load : HTMLIonLoadingElement;
   toast:HTMLIonToastElement;
   constructor(private service:StatusService, 
     private loading:LoadingController,
-    private toastController: ToastController) { }
+    private toastController: ToastController,
+    private DeputadosApiService:DeputadosApiService) { }
 
   ngOnInit() {
     this.getDeputados();
@@ -44,31 +48,43 @@ export class PesquisaPage implements OnInit {
   async getDeputados(){
     await this.initLoading();
     await this.load.present();
-    return this.service.getAll(this.filter).subscribe(async (deputados:Status[])=>{
-    this.deputados = deputados;
-    await this.load.dismiss();
+    forkJoin({
+      todosdeputados: this.service.getAll(this.filter),
+      DeputadosSeguidos: this.DeputadosApiService.seguindo(this.usuario)
+    }).subscribe(async resultado=>{
+      this.deputados = resultado.todosdeputados;
+      this.deputadosSeguidos = resultado.DeputadosSeguidos;
+      await this.load.dismiss();
     });
   }
 
-  pesquisar(e){
-    this.filter.siglaPartido = e.partidos;
-    this.filter.siglaUf = e.estados;
+  pesquisar(e:FilterDeputado){
+    this.filter = e;
     this.getDeputados();
   }
 
   async selcionaDeputado(deputado:Status){
     await this.initToast();
-    this.toast.message = `Agora você está seguindo Deputado(a) ${deputado.nome}`;
-    await this.toast.present();
-    this.DeputadosSeguidos.push(deputado);
+    
+    this.DeputadosApiService.Seguir(this.usuario, deputado.id).subscribe(
+      async(resp)=>{
+        this.toast.message = `Agora você está seguindo Deputado(a) ${deputado.nome}`;
+        await this.toast.present();
+        this.getDeputados();
+    });
+    
   }
 
   async deixarDeSeguir(deputado:Status){
-    const index = this.DeputadosSeguidos.findIndex((deputadoSeguido)=>(deputadoSeguido.id === deputado.id));
-    this.DeputadosSeguidos.splice(index,1);
     await this.initToast();
-    this.toast.message = `Você deixou de seguir Deputado(a) ${deputado.nome}`;
-    await this.toast.present();
+   this.DeputadosApiService.deixardeSeguir(this.usuario, deputado.id).subscribe(
+     async ()=>{
+      this.toast.message = `Você deixou de seguir Deputado(a) ${deputado.nome}`;
+      await this.toast.present();
+      this.getDeputados();
+   });
+   
+    
   }
 
 }
