@@ -25,7 +25,7 @@ export class CadastroPage implements OnInit {
   constructor(private service:ContaService, private loading:LoadingController, private router:Router) { }
 
   ngOnInit() {
-    this.service.teste().subscribe((res)=>{console.log(res)});
+    
     
   }
 

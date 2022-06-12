@@ -48,4 +48,8 @@ export class LoginPage implements OnInit {
     });
   }
 
+  cadastrar(){
+    this.router.navigate(['/cadastro']);
+  }
+
 }

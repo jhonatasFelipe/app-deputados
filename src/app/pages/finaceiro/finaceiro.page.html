@@ -1,13 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>finaceiro</ion-title>
-  </ion-toolbar>
-</ion-header>
+<cabecalho></cabecalho>
 
 <ion-content>
-  <canvas baseChart 
+
+  <h1 class="titulo">Valores gastos pelo deputado no ano corrente</h1>
+  <canvas baseChart  *ngIf="data"
   [type]=type
   [data]=data
   >
   </canvas>
+
+  <ion-accordion-group>
+    <ion-accordion value="colors {{i}}" *ngFor="let group of despesasAgupadasPorMes; let i = index">
+      <ion-item slot="header">
+        <ion-label>{{meses[i]}}/{{2022}}</ion-label>
+      </ion-item>
+      <ion-card slot="content" *ngFor="let despesa of group">
+        <ion-card-header>
+          <ion-card-title>
+           Valor : {{despesa.valorLiquido | currency : 'BRL':true:'1.2-2'}}
+          </ion-card-title>
+          <ion-card-subtitle>
+            {{despesa.tipoDespesa | lowercase}}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <h5>Data:</h5>
+          <p>{{despesa.dataDocumento | date : 'MM/dd/yyyy': 'pt-Br'}}</p>
+
+          <h5>Fornecedor:</h5>
+          <p>{{despesa.nomeFornecedor}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>
+
